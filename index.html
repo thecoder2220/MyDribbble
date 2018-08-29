@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>My Dribbble</title>
+    <link href="includes/css/adapt.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="searchStyle form-inline" id="searchform">
+        <div class="form-group" data-template="searchform" data-submit-action="search()">
+            <input type="search" title="Search input" placeholder="Search" id="searchQuery" data-template="suggest" class="form-control ui-autocomplete-input" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+        </div>
+    </div>
+
+    <!-- MindBreeze Appliance -->
+    <div id="searchresults">
+    </div>
+
+    <!-- Script -->
+    <script src="https://gspmsa1.parisgsa.lan/apps/scripts/client.js" data-global-export="false"></script>
+    <script>
+        Mindbreeze.require(["client/application"], function (Application) {
+
+            var application = new Application({
+                rootEl: document.getElementById("searchform"),
+                startSearch: false,
+                enableUserSourceInfo: false
+            });
+            //Here you can set a constraint which will be used for the search. It will be added to the query you type into the search-box. If you need no constrain, keep it empty.
+            application.setConstraint({unparsed: "extension:pdf"});
+
+            //This function retreives the query from the search box and use it as parameter for the searchpage it will be redirected to
+            window.search = function () {
+                var searchQuery = document.getElementById("searchQuery").value;
+                //Redirect to the SearchPage you implemented and add the Query as parameter. This can be any SearchApp as well as the standart client.
+                window.location.href = "search-results.html?searchQuery=" + encodeURIComponent(searchQuery);
+            }
+        });
+    </script>
+</body>
+
+</html>

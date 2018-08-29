@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html data-request-lang>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mindbreeze</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta name="generator" content="Mindbreeze - Web Client Version: 18.1.4.437" />
+    <meta name="mes:user" content="$$USERNAME$$">
+    <meta name="display:mes:user" content="$$IS_USERNAME_DISPLAYED$$">
+    <meta name="mes:emailaddress" content="$$EMAILADDRESS$$">
+    <meta name="mes:loginstatus" content="$$LOGIN_ACTION$$">
+    <meta name="mes:logoutdisabled" content="$$LOGOUTDISABLED$$">
+    <meta name="mes:decrypted:user" content="$$DECRYPTEDUSERNAME$$">
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link href="https://gspmsa1.parisgsa.lan/apps/css/adapted.css" rel="stylesheet">
+</head>
+<body class="mb-body" data-datasources-name-order="$$DATASOURCES_NAME_ORDER$$" data-datasources-group-by-category="$$DATASOURCES_GROUP_BY_CATEGORY$$" data-datasources-category-order="$$DATASOURCES_CATEGORY_ORDER$$" data-enable-immediate-display-of-federated-results="$$ENABLE_IMMEDIATE_DISPLAY_OF_FEDERATED_RESULTS$$">
+<div class="mb-progress-bar mb-fixed"></div>
+<div class="mb-header navbar navbar-inverse">
+    <h1>
+        <span lang="en" class="mb-acc">Mindbreeze InSpire</span>
+        <img class="mb-pulse" src="../img/logo-bg.png" alt="">
+        <img src="../img/logo.png" alt="">
+    </h1>
+    <div class="pull-right mb-top-menu mb-role" data-shortcut="alt+5" data-aria-describedby="mb-top-menu-description">
+        <script type="text/x-mustache-template" data-tag-name="span" data-role="tooltip" data-class-name="mb-role mb-bottom" data-attr-aria-hidden="true" data-id="mb-top-menu-description">{{i18n.topbar}} (Alt+5)</script>
+        <div data-template="menu" class="nav mb-scroll-horizontal mb-menu-scroll-horizontal mb-hidden-embedded mb-no-print mb-role "></div>
+        <div data-template="tasksmonitor" class="loaderLeft"></div>
+    </div>
+    <div class="container">
+        <form class="center search-field mb-print-left"
+              role="search"
+              aria-controls="main"
+              data-template="searchform"
+              data-requires-user-input="true"
+              data-enable-search-reset="$$ENABLE_SEARCH_RESET$$">
+            <script type="text/x-mustache-template" data-tag-name="label" data-class-name="mb-acc" data-attr-for="query">{{i18n.search}}</script>
+            <input data-template="suggest"
+                   data-disabled="$$DISABLE_MAIN_SUGGEST$$"
+                   data-placeholder="search"
+                   data-shortcut="alt+1"
+                   id="query"
+                   data-aria-describedby="search-description"
+                   data-source-id-pattern="$$SUGGEST_SOURCE_ID_PATTERN$$"
+                   data-initial-source-id-pattern="$$SUGGEST_INITIAL_SOURCE_ID_PATTERN$$"
+                   data-grouped="true"
+                   class="mb-query mb-role" name="query" type="search"
+                   autofocus
+            >
+            <script type="text/x-mustache-template" data-tag-name="span" data-role="tooltip" data-class-name="mb-bottom mb-role" data-attr-aria-hidden="true" data-id="search-description">{{i18n.search}} (Alt+1)</script>
+            <button class="btn btn-link mb-no-print" type="button" style="right:24px" data-action-object="{&quot;resetSearch&quot;:{}}" data-i18n="[title]client_clear">
+                <i class="icon-remove-sign"></i>
+                <script type="text/x-mustache-template" data-tag-name="span" data-class-name="mb-acc">{{i18n.client_clear}}</script>
+            </button>
+            <button class="btn btn-link mb-no-print" type="submit" data-i18n="[title]action_search">
+                <i class="icon-search"></i>
+                <script type="text/x-mustache-template" data-tag-name="span" data-class-name="mb-acc">{{i18n.action_search}}</script>
+            </button>
+            <button class="mb-no-print mb-btn-save-search btn btn-link" data-action-object="{&quot;saveSearch&quot;: {}}" data-shortcut="alt+s" data-enable-if-model-valid="search" data-i18n="[title]save_search">
+                <i class="icon-save"></i>
+                <script type="text/x-mustache-template" data-tag-name="span" data-class-name="mb-acc">{{i18n.save_search}}</script>
+            </button>
+        </form>
+    </div>
+</div>
+
+<div data-template="view" data-count="5" data-queryspelling-upto-results="50">
+    <!-- Suchreiter -->
+    <div class="navbar mb-role" data-shortcut="alt+4" data-aria-describedby="mb-tabs-description">
+        <script type="text/x-mustache-template" data-attr-id="mb-tabs-description" data-class-name="mb-bottom mb-role" data-tag-Name="span" data-attr-role="tooltip" data-attr-aria-hidden="true">{{{i18n.search_tabs}}} (Alt+4)</script>
+        <div class="navbar-inner nowrap" style="position: relative">
+            <div class="container">
+                <ul class="nav" data-template="tabs" data-model="tabs" data-datasourcetabs="true" data-editable="$$TAB_EDITING_ENABLED$$" data-aria-labelledby="mb-tabs-description">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-role" role="main" id="main" data-shortcut="alt+2" data-aria-describedby="results-description" data-track-activedescendant>
+        <script type="text/x-mustache-template" data-tag-name="span" data-id="results-description" data-class-name="mb-role" data-attr-role="tooltip" data-attr-aria-hidden="true">
+            {{i18n.editor_result_title}} (Alt+2)
+        </script>
+        <div data-template="alert"></div>
+        <div class="mb-stack" data-template="stack" data-model="stack">
+            <div class="mb-stack-title" aria-live="assertive">
+                <script type="text/x-mustache-template" data-attr-role="status" data-attr-class="{{^estimated_count?}}hide{{/estimated_count?}}" data-attr-tabindex="-1">
+                    {{^status_messages.no_results?}}
+                    <h2>
+                        {{#estimated_count?}}
+                        {{estimated_count}}
+                        {{^singular}}{{i18n.editor_result_title}}{{/singular}}
+                        {{#singular}}{{i18n.editor_singular_result_title}}{{/singular}}
+                        {{/estimated_count?}}
+                        <button class="btn hidden-when-mb-stack-has-child btn-export mb-no-print"
+                                name="export"
+                                data-action-name="exportResults"
+                                data-properties="$$EXPORT_RESULTS_PROPERTIES$$"
+                                data-export-enabled="$$EXPORT_RESULTS_ENABLED$$"
+                        >{{i18n.export}}
+                        </button>
+                    </h2>
+                    {{/status_messages.no_results?}}
+                </script>
+            </div>
+
+            <div class="mb-stack-content">
+                <div data-template="searchinfo"></div>
+                <div class="row-fluid">
+                    <div class="span9">
+                        <div class="clearfix"></div>
+                        <div data-template="map"></div>
+
+                        <script type="text/x-mustache-template" data-tag-name="span" data-id="results-region-description" data-class-name="mb-acc">
+                            {{i18n.editor_result_title}}
+                        </script>
+
+                        <div data-template="results" data-appendonscroll="$$PAGING_TYPE_APPENDONSCROLL_ENABLED$$" role="region" data-aria-labelledby="results-region-description" data-enable-voting="$$ENABLE_VOTING$$"></div>
+                        <div data-template="pagination" class="visible-phone mb-no-print mb-top-separated-phone mb-hidden-relevance-info" data-mb-exclude="$$PAGING_TYPE_PAGES_ENABLED$$"></div>
+                        <div data-template="pages" data-mb-exclude="$$PAGING_TYPE_APPENDONSCROLL_ENABLED$$" class="text-center mb-hidden-relevance-info" data-max-page-count="$$PAGING_MAX_PAGE_COUNT$$"></div>
+                    </div>
+
+                    <div class="span3 mb-role" role="region" data-shortcut="alt+3" data-aria-describedby="sidebar-description" tabindex="-1">
+                        <script type="text/x-mustache-template" data-tag-name="span" data-id="sidebar-description" data-class-name="mb-role" data-attr-role="tooltip" data-attr-aria-hidden="true">
+                            {{i18n.sidebar}} (Alt+3)
+                        </script>
+                        <hr class="visible-phone">
+                        <div class="mb-filters mb-no-print">
+
+                            <div data-template="profilesettings" data-enable-profile="$$ENABLE_PROFILE_SETTINGS$$"></div>
+
+
+                            <div data-template="savedsearches" data-serversaved="$$PERSISTED_QUERIES_ENABLED$$" class="mb-saved-searches" aria-controls="main"></div>
+
+                            <div data-template="collect" data-results-shortcut="Alt+2" data-favorites-collection-path="$$FAVORITES_COLLECTION_PATH$$"></div>
+                            <div data-template="sortswitch"></div>
+                            <div data-template="summarize" data-enabled="$$ENABLE_SUMMARIZE$$"></div>
+                            <ul data-template="breadcrumb" class="nav nav-stacked nav-pills"></ul>
+
+                            <div role="region" data-aria-labelledby="region-filter-header">
+                                <h2 class="mb-acc"><script type="text/x-mustache-template" data-attr-id="region-filter-header" data-tag-Name="span">{{{i18n.refineSearch}}}</script></h2>
+                                <div data-template="accordion" data-enabled="$$FILTER_COLLAPSIBLE$$" data-default-open="$$FILTER_DEFAULT_OPEN$$" data-aria-labelledby="region-filter-header">
+                                    <div data-template="datasources" data-model="userSourceInfo" data-path="sources.data_sources" data-displayed="$$FILTER_DISPLAYED$$" role="presentation"></div>
+                                    <div data-template="constraints" data-model="userSourceInfo" data-path="sources.constraints" data-displayed="$$FILTER_DISPLAYED$$" role="presentation"></div>
+                                    <div data-template="filteredfacet" data-name="mes:date" data-title="i18n.date" data-user-input-template="inputdate" data-user-input-isrange="true" data-displayed="$$FILTER_DISPLAYED$$" data-always-visible="true" role="presentation"></div>
+                                    <div data-template="filteredfacets" data-name="mes:configuredfacets" data-displayed="$$FILTER_DISPLAYED$$" role="presentation"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- preview -->
+<div data-template="preview" id="mb_preview"></div>
+
+<!-- alerting -->
+<div data-template="alertcenter" id="alertcenter"></div>
+
+<!-- preferences -->
+<div class="modal hide mb-role" id="preferences" role="dialog" data-aria-labelledby="preferences-header">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <script type="text/x-mustache-template"
+                    data-class-name="modal-header"
+                    data-id="preferences-header"
+            >
+                <button class="close" data-dismiss="modal">
+                    &times;
+                    <span class="mb-acc">{{i18n.Close}}</span>
+                </button>
+
+                <h2 class="modal-title"><i class="icon-cog"></i> {{{i18n.client_settings}}}</h2>
+            </script>
+            <div class="modal-body" data-template="settings"></div>
+        </div>
+    </div>
+</div>
+
+<span data-template="feedbackbutton" data-check-if-enabled-in-profile="true" data-shortcut="alt+0" class="mb-role" data-aria-describedby="feedback-description">
+        <script type="text/x-mustache-template" data-tag-name="span" data-id="feedback-description" data-class-name="mb-role mb-left" data-attr-role="tooltip" data-attr-aria-hidden="true">
+          {{i18n.client_headsup_feedback_button}} (Alt+0)
+        </script>
+      </span>
+
+<script src="https://gspmsa1.parisgsa.lan/apps/scripts/client.js"></script>
+<script>
+    Mindbreeze.require(["client/application"], function(Application) {
+        var application = new Application({
+            startSearch: false,
+            enableProfile: true,
+            updateTitle: true
+        });
+    });
+</script>
+</body>
+</html>
